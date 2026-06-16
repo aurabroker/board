@@ -1,0 +1,80 @@
+/* ============================================================
+   Aura D&O — Color tokens
+   Mood: law-firm gravitas meets fintech precision.
+   Deep navy ground, restrained amber/gold accent, off-white ink.
+   ============================================================ */
+
+:root {
+  /* ---- Navy / steel scale (the ground) ---- */
+  --navy-950: #070F18;
+  --navy-900: #0A1622;
+  --navy-800: #0D1B2A; /* primary dark surface */
+  --navy-700: #142435;
+  --navy-600: #1C2B3A; /* steel — alt dark surface */
+  --navy-500: #27384B;
+  --navy-400: #3A4F64;
+  --navy-300: #5A7186;
+  --navy-200: #8A9DAF;
+  --navy-100: #BCC8D3;
+
+  /* ---- Amber / gold scale (the accent) ---- */
+  --gold-200: #EFD8A3;
+  --gold-300: #E4C078;
+  --gold-400: #DBA94A;
+  --gold-500: #C9922A; /* signature accent */
+  --gold-600: #A8761C;
+  --gold-700: #855C14;
+
+  /* ---- Light / paper scale ---- */
+  --paper-0:  #FFFFFF;
+  --paper-50: #F8F9FB; /* cool white section bg */
+  --paper-100:#F1F3F7;
+  --paper-200:#E4E8EE;
+  --paper-300:#D2D8E1;
+
+  /* ---- Ink ---- */
+  --ink-0:   #F5F5F0; /* off-white text on dark */
+  --ink-50:  #E9EAE4;
+  --slate-700:#33414F;
+  --slate-600:#475565;
+  --slate-500:#5E6C7C;
+  --slate-400:#7B8896;
+
+  /* ---- Semantic ---- */
+  --danger-500: #C2433B; /* claim / risk red */
+  --danger-600: #A1332C;
+  --success-500:#3E7C63; /* covered / protected green */
+  --success-600:#2F5F4C;
+
+  /* ============ Semantic aliases ============ */
+  /* Surfaces */
+  --surface-base:       var(--navy-800);
+  --surface-raised:     var(--navy-700);
+  --surface-steel:      var(--navy-600);
+  --surface-light:      var(--paper-50);
+  --surface-card-light: var(--paper-0);
+  --surface-card-dark:  var(--navy-700);
+
+  /* Text */
+  --text-on-dark:       var(--ink-0);
+  --text-on-dark-muted: var(--navy-200);
+  --text-on-light:      var(--navy-800);
+  --text-on-light-muted:var(--slate-500);
+  --text-accent:        var(--gold-500);
+
+  /* Lines & borders */
+  --border-on-dark:     rgba(245, 245, 240, 0.12);
+  --border-on-dark-strong: rgba(245, 245, 240, 0.22);
+  --border-on-light:    var(--paper-200);
+  --border-accent:      var(--gold-500);
+
+  /* Interactive accent */
+  --accent:             var(--gold-500);
+  --accent-hover:       var(--gold-400);
+  --accent-press:       var(--gold-600);
+  --accent-contrast:    var(--navy-900); /* text on gold */
+
+  /* Status */
+  --status-risk:        var(--danger-500);
+  --status-covered:     var(--success-500);
+}

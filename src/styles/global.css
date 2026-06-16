@@ -1,0 +1,70 @@
+/* Aura D&O — global styles. Imports the token layer, then base resets. */
+
+@import './tokens/fonts.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/effects.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--navy-800);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+.sticky-cta {
+  display: none;
+}
+
+/* Eyebrow / kicker utility (mono, uppercase, wide tracking) */
+.aura-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+@media (max-width: 1000px) {
+  .hero-grid,
+  .process-grid,
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .risk-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .roles-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav-links a {
+    display: none;
+  }
+  .risk-grid,
+  .roles-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sticky-cta {
+    display: block !important;
+  }
+  body {
+    padding-bottom: 84px;
+  }
+}
