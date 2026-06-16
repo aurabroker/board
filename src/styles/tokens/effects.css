@@ -1,0 +1,36 @@
+/* ============================================================
+   Aura D&O — Effects: radii, shadows, borders, motion
+   Restrained. Corners are tight (legal precision, not playful).
+   Shadows are soft and low — gravitas, not floaty cards.
+   ============================================================ */
+
+:root {
+  /* ---- Radii (deliberately small) ---- */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* ---- Shadows (on light surfaces) ---- */
+  --shadow-sm: 0 1px 2px rgba(13, 27, 42, 0.06), 0 1px 3px rgba(13, 27, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(13, 27, 42, 0.08), 0 2px 4px rgba(13, 27, 42, 0.05);
+  --shadow-lg: 0 18px 40px rgba(13, 27, 42, 0.12), 0 6px 14px rgba(13, 27, 42, 0.07);
+
+  /* ---- Glow / accent on dark ---- */
+  --shadow-accent: 0 6px 24px rgba(201, 146, 42, 0.28);
+  --ring-accent: 0 0 0 3px rgba(201, 146, 42, 0.35);
+  --ring-focus: 0 0 0 3px rgba(201, 146, 42, 0.45);
+
+  /* ---- Hairlines ---- */
+  --hairline-dark: 1px solid var(--border-on-dark);
+  --hairline-light: 1px solid var(--border-on-light);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 420ms;
+}
