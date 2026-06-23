@@ -84,14 +84,15 @@ export function Hero({ onContact }) {
         <source src="/hero.webm" type="video/webm" />
         <source src="/hero.mp4" type="video/mp4" />
       </video>
-      {/* Scrim only at the edges — the centre stays a clear window on the whale */}
+      {/* Scrim: nav wash on top, and a deep-water fade at the bottom that
+          blends seamlessly into the shark band below */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(180deg, rgba(4,16,23,0.42) 0%, rgba(4,16,23,0) 16%), linear-gradient(0deg, rgba(4,16,23,0.80) 0%, rgba(4,16,23,0.30) 18%, rgba(4,16,23,0) 42%)',
+            'linear-gradient(180deg, rgba(4,16,23,0.42) 0%, rgba(4,16,23,0) 16%), linear-gradient(0deg, rgba(4,16,23,0.97) 0%, rgba(4,16,23,0.52) 14%, rgba(4,16,23,0) 38%)',
         }}
       />
 
@@ -187,7 +188,7 @@ export function ShieldBand({ onContact }) {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(95deg, rgba(4,16,23,0.80) 0%, rgba(4,16,23,0.46) 32%, rgba(4,16,23,0.10) 58%, rgba(4,16,23,0) 80%)',
+            'linear-gradient(180deg, rgba(4,16,23,0.97) 0%, rgba(4,16,23,0.45) 13%, rgba(4,16,23,0) 32%), linear-gradient(0deg, rgba(4,16,23,0.97) 0%, rgba(4,16,23,0.32) 16%, rgba(4,16,23,0) 38%), linear-gradient(95deg, rgba(4,16,23,0.78) 0%, rgba(4,16,23,0.44) 32%, rgba(4,16,23,0.10) 58%, rgba(4,16,23,0) 80%)',
         }}
       />
 
