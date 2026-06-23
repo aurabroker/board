@@ -162,7 +162,7 @@ export function ShieldBand({ onContact }) {
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        minHeight: 'clamp(520px, 80vh, 780px)',
+        aspectRatio: '1366 / 768',
         paddingTop: 'clamp(56px, 7vw, 96px)',
         paddingBottom: 'clamp(56px, 7vw, 96px)',
         paddingRight: 'clamp(20px, 5vw, 64px)',
@@ -175,7 +175,7 @@ export function ShieldBand({ onContact }) {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(/shark-wide.png)',
+          backgroundImage: 'url(/sharknew.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
