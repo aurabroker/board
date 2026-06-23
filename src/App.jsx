@@ -9,17 +9,19 @@ function App() {
   };
 
   return (
-    <div style={{ background: 'var(--navy-800)', minHeight: '100vh' }}>
+    <div className="layout" style={{ background: 'var(--navy-800)', minHeight: '100vh' }}>
       <Nav onContact={goContact} />
-      <Hero onContact={goContact} />
-      <ShieldBand onContact={goContact} />
-      <RiskSection />
-      <CoverageSection />
-      <RolesSection />
-      <ProcessSection />
-      <FaqSection />
-      <ContactSection />
-      <Footer />
+      <div className="layout-main">
+        <Hero onContact={goContact} />
+        <ShieldBand onContact={goContact} />
+        <RiskSection />
+        <CoverageSection />
+        <RolesSection />
+        <ProcessSection />
+        <FaqSection />
+        <ContactSection />
+        <Footer />
+      </div>
       <StickyCTA onContact={goContact} />
     </div>
   );

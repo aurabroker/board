@@ -39,6 +39,62 @@ a {
   color: var(--text-accent);
 }
 
+/* ---- Layout: fixed left menu rail + scrolling content ---- */
+.layout {
+  display: flex;
+  align-items: flex-start;
+}
+.layout-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Left vertical navigation ---- */
+.sidenav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+  width: 240px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 34px 24px;
+  background: rgba(7, 33, 46, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-on-dark);
+}
+.sidenav-brand {
+  display: inline-block;
+  text-decoration: none;
+}
+.sidenav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidenav-links a {
+  display: block;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--navy-100);
+  text-decoration: none;
+  transition: background var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
+}
+.sidenav-links a:hover {
+  background: rgba(var(--accent-rgb), 0.14);
+  color: var(--ink-0);
+}
+.sidenav-cta {
+  margin-top: auto; /* pin CTA to the bottom of the rail */
+}
+
 @media (max-width: 1000px) {
   .hero-grid,
   .process-grid,
@@ -52,10 +108,32 @@ a {
   .roles-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+  /* Rail collapses into a top bar */
+  .layout {
+    flex-direction: column;
+  }
+  .sidenav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    height: auto;
+    gap: 16px;
+    padding: 12px clamp(16px, 4vw, 28px);
+    border-right: none;
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+  .sidenav-links {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .sidenav-cta {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 760px) {
-  .nav-links a {
+  .sidenav-links {
     display: none;
   }
   .risk-grid,

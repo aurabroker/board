@@ -3,51 +3,47 @@ import { Badge } from '../components/core/Badge';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
 
-const navLink = {
-  fontFamily: 'var(--font-body)',
-  fontSize: '15px',
-  fontWeight: 500,
-  color: 'var(--navy-100)',
-  textDecoration: 'none',
-};
-
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 10, behavior: 'smooth' });
 }
 
+const NAV_ITEMS = [
+  ['Ryzyko', 'ryzyko'],
+  ['Co obejmuje', 'polisa'],
+  ['Jak działamy', 'proces'],
+  ['FAQ', 'faq'],
+  ['Kontakt', 'kontakt'],
+];
+
 export function Nav({ onContact }) {
   return (
-    <nav
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '16px clamp(20px, 5vw, 64px)',
-        background: 'rgba(7,33,46,0.78)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        borderBottom: '1px solid var(--border-on-dark)',
-      }}
-    >
-      <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ textDecoration: 'none' }}>
-        <Logo />
+    <nav className="sidenav">
+      <a
+        href="#top"
+        className="sidenav-brand"
+        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+      >
+        <Logo onDark width={148} />
       </a>
-      <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '34px' }}>
-        <a href="#ryzyko" style={navLink}>Ryzyko</a>
-        <a href="#polisa" style={navLink}>Co obejmuje</a>
-        <a href="#proces" style={navLink}>Jak działamy</a>
-        <a href="#faq" style={navLink}>FAQ</a>
-        <Button variant="primary" size="sm" onClick={onContact}>Sprawdź ochronę</Button>
+
+      <div className="sidenav-links">
+        {NAV_ITEMS.map(([label, id]) => (
+          <a key={id} href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollToId(id); }}>
+            {label}
+          </a>
+        ))}
+      </div>
+
+      <div className="sidenav-cta">
+        <Button variant="primary" size="md" fullWidth onClick={onContact}>Sprawdź ochronę</Button>
       </div>
     </nav>
   );
 }
 
 export function Hero({ onContact }) {
+  const textShadow = '0 2px 22px rgba(4,16,23,0.55)';
   return (
     <header
       id="top"
@@ -61,7 +57,7 @@ export function Hero({ onContact }) {
         background: 'var(--navy-900)',
       }}
     >
-      {/* Brand hero artwork (whale) */}
+      {/* Brand hero artwork (whale) — kept prominent */}
       <div
         aria-hidden="true"
         style={{
@@ -73,14 +69,14 @@ export function Hero({ onContact }) {
           backgroundRepeat: 'no-repeat',
         }}
       />
-      {/* Left scrim — carries the headline, hides the artwork's own baked copy */}
+      {/* Light scrim — only enough to keep the headline legible */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(100deg, rgba(6,22,31,0.95) 0%, rgba(8,40,56,0.86) 28%, rgba(8,40,56,0.42) 54%, rgba(8,40,56,0) 78%)',
+            'linear-gradient(95deg, rgba(6,22,31,0.74) 0%, rgba(6,22,31,0.34) 36%, rgba(6,22,31,0.06) 60%, rgba(6,22,31,0) 78%)',
         }}
       />
 
@@ -92,7 +88,7 @@ export function Hero({ onContact }) {
           margin: '0 auto',
         }}
       >
-        <div style={{ maxWidth: '640px' }}>
+        <div style={{ maxWidth: '620px' }}>
           <Badge kind="eyebrow">OC Członków Zarządu · D&amp;O</Badge>
           <h1
             style={{
@@ -103,6 +99,7 @@ export function Hero({ onContact }) {
               lineHeight: 1.02,
               letterSpacing: '-0.01em',
               color: 'var(--ink-0)',
+              textShadow,
             }}
           >
             Nie tylko dla <span style={{ fontStyle: 'italic', color: 'var(--gold-300)' }}>wielorybów</span>.
@@ -114,7 +111,8 @@ export function Hero({ onContact }) {
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(17px, 1.4vw, 20px)',
               lineHeight: 1.6,
-              color: 'var(--navy-100)',
+              color: 'var(--ink-50)',
+              textShadow,
             }}
           >
             Roszczenie nie pyta o wielkość spółki. Ubezpieczenie D&amp;O chroni{' '}
@@ -236,7 +234,7 @@ export function Footer() {
           alignItems: 'center',
         }}
       >
-        <Logo />
+        <Logo onDark width={132} />
         <p style={{ margin: 0, maxWidth: '52ch', fontSize: '13px', lineHeight: 1.6, color: 'var(--navy-300)' }}>
           Materiał ma charakter informacyjny i nie stanowi oferty w rozumieniu Kodeksu cywilnego.
           Zakres ochrony określa każdorazowo umowa ubezpieczenia. Aura Consulting — broker ubezpieczeniowy · D&amp;O.

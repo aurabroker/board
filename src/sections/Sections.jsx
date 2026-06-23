@@ -216,7 +216,7 @@ export function ProcessSection() {
 
 export function FaqSection() {
   const items = [
-    { q: 'Czy spółka może opłacić składkę za zarząd?', a: 'Tak. Składkę finansuje spółka, a ochrona obejmuje imiennie członków zarządu i rady nadzorczej — to standardowy i zgodny z prawem model.' },
+    { q: 'Czy spółka może opłacić składkę za zarząd?', a: 'Tak. Składkę finansuje spółka. Ochrona działa „bezimiennie” — obejmuje wszystkie osoby pełniące funkcje w organach spółki (zarząd, rada nadzorcza, prokurenci) z tytułu sprawowanej funkcji. Na polisie nie wpisuje się już danych osobowych osób ubezpieczonych. To standardowy i zgodny z prawem model.' },
     { q: 'Co dzieje się z ochroną, gdy odchodzę z funkcji?', a: 'Roszczenia mogą pojawić się po latach. Klauzula run-off utrzymuje ochronę dla decyzji podjętych w okresie pełnienia funkcji — także po odejściu.' },
     { q: 'Czy polisa działa przy postępowaniach karnych?', a: 'D&O pokrywa koszty obrony prawnej również w postępowaniach karnych i administracyjnych, do czasu prawomocnego rozstrzygnięcia.' },
     { q: 'Ile kosztuje D&O dla spółki z o.o.?', a: 'Składka zależy od skali działalności, branży i sumy gwarancyjnej. Dla wielu spółek z o.o. to koszt rzędu kilku tysięcy złotych rocznie — wycenę przygotujemy indywidualnie.' },
