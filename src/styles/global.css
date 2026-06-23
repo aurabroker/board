@@ -19,6 +19,7 @@ body {
   background: var(--navy-800);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* contain the full-bleed hero break-out */
 }
 
 a {
@@ -39,32 +40,35 @@ a {
   color: var(--text-accent);
 }
 
-/* ---- Layout: fixed left menu rail + scrolling content ---- */
+/* ---- Layout: fixed, transparent left rail over a full-bleed canvas ---- */
 .layout {
-  display: flex;
-  align-items: flex-start;
+  position: relative;
+  background: var(--navy-800);
 }
 .layout-main {
-  flex: 1;
+  margin-left: var(--rail-w); /* clear the fixed rail */
   min-width: 0;
 }
 
-/* ---- Left vertical navigation ---- */
+/* Hero breaks out under the rail so the artwork/video spans full width */
+.hero-fullbleed {
+  margin-left: calc(-1 * var(--rail-w));
+  width: calc(100% + var(--rail-w));
+}
+
+/* ---- Left vertical navigation (transparent, floats over the hero) ---- */
 .sidenav {
-  position: sticky;
+  position: fixed;
+  left: 0;
   top: 0;
   z-index: 50;
-  flex-shrink: 0;
-  width: 240px;
+  width: var(--rail-w);
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 34px 24px;
-  background: rgba(7, 33, 46, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-right: 1px solid var(--border-on-dark);
+  padding: 34px 26px;
+  background: transparent;
 }
 .sidenav-brand {
   display: inline-block;
@@ -77,22 +81,82 @@ a {
 }
 .sidenav-links a {
   display: block;
-  padding: 11px 14px;
+  padding: 10px 14px;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: var(--navy-100);
+  color: var(--ink-0);
   text-decoration: none;
+  text-shadow: 0 1px 14px rgba(2, 10, 16, 0.9);
   transition: background var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
 }
 .sidenav-links a:hover {
-  background: rgba(var(--accent-rgb), 0.14);
-  color: var(--ink-0);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
-.sidenav-cta {
-  margin-top: auto; /* pin CTA to the bottom of the rail */
+.sidenav-foot {
+  margin-top: auto; /* pin CTA + phone to the bottom of the rail */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sidenav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-0);
+  text-decoration: none;
+  text-shadow: 0 1px 14px rgba(2, 10, 16, 0.9);
+}
+.sidenav-phone:hover {
+  color: var(--gold-300);
+}
+
+@media (max-width: 1000px) {
+  /* Rail collapses into a solid top bar; reclaim the rail offset */
+  :root {
+    --rail-w: 0px;
+  }
+  .layout-main {
+    margin-left: 0;
+  }
+  .sidenav {
+    position: sticky;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px clamp(16px, 4vw, 28px);
+    background: rgba(7, 33, 46, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-on-dark);
+  }
+  .sidenav-links {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .sidenav-links a {
+    text-shadow: none;
+    color: var(--navy-100);
+  }
+  .sidenav-foot {
+    margin-top: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+  .sidenav-phone {
+    text-shadow: none;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -107,28 +171,6 @@ a {
   }
   .roles-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-  /* Rail collapses into a top bar */
-  .layout {
-    flex-direction: column;
-  }
-  .sidenav {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: auto;
-    height: auto;
-    gap: 16px;
-    padding: 12px clamp(16px, 4vw, 28px);
-    border-right: none;
-    border-bottom: 1px solid var(--border-on-dark);
-  }
-  .sidenav-links {
-    flex-direction: row;
-    gap: 10px;
-  }
-  .sidenav-cta {
-    margin-top: 0;
   }
 }
 

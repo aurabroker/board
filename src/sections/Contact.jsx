@@ -46,6 +46,31 @@ export function ContactSection() {
               </li>
             ))}
           </ul>
+
+          <a
+            href="tel:+48500502702"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '14px',
+              marginTop: '32px',
+              padding: '16px 22px',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border-accent)',
+              background: 'rgba(var(--accent-rgb),0.10)',
+              textDecoration: 'none',
+            }}
+          >
+            <Icon name="phone" size={26} color="var(--gold-300)" />
+            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+              <span style={{ fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--navy-200)' }}>
+                Zadzwoń do brokera
+              </span>
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '30px', color: 'var(--ink-0)' }}>
+                500 502 702
+              </span>
+            </span>
+          </a>
         </div>
 
         <div style={{ background: 'rgba(245,245,240,0.03)', border: '1px solid var(--border-on-dark)', borderRadius: 'var(--radius-lg)', padding: 'clamp(24px,3vw,36px)' }}>

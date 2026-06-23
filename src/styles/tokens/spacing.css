@@ -19,6 +19,7 @@
   /* Layout */
   --container-max: 1200px;
   --container-narrow: 760px;
+  --rail-w: 248px; /* width of the fixed left navigation rail */
   --gutter: var(--space-5);
   --section-y: var(--space-9);
   --section-y-sm: var(--space-8);

@@ -35,8 +35,11 @@ export function Nav({ onContact }) {
         ))}
       </div>
 
-      <div className="sidenav-cta">
+      <div className="sidenav-foot">
         <Button variant="primary" size="md" fullWidth onClick={onContact}>Sprawdź ochronę</Button>
+        <a className="sidenav-phone" href="tel:+48500502702">
+          <Icon name="phone" size={17} /> 500 502 702
+        </a>
       </div>
     </nav>
   );
@@ -47,36 +50,48 @@ export function Hero({ onContact }) {
   return (
     <header
       id="top"
+      className="hero-fullbleed"
       style={{
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
-        alignItems: 'center',
-        minHeight: 'clamp(540px, 84vh, 780px)',
-        padding: 'clamp(56px, 8vw, 104px) clamp(20px, 5vw, 64px)',
+        alignItems: 'flex-end',
+        minHeight: 'clamp(560px, 88vh, 860px)',
+        paddingTop: 'clamp(120px, 16vh, 200px)',
+        paddingBottom: 'clamp(48px, 7vw, 92px)',
+        paddingRight: 'clamp(20px, 5vw, 64px)',
+        paddingLeft: 'calc(var(--rail-w) + clamp(20px, 4vw, 48px))',
         background: 'var(--navy-900)',
       }}
     >
-      {/* Brand hero artwork (whale) — kept prominent */}
-      <div
+      {/* Brand hero video (whale). Falls back to the whale still via poster
+          until /hero.mp4 is present in /public. */}
+      <video
         aria-hidden="true"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/hero-whale.png"
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(/hero-whale.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
         }}
-      />
-      {/* Light scrim — only enough to keep the headline legible */}
+      >
+        <source src="/hero.webm" type="video/webm" />
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+      {/* Soft scrim — light touch so the whale stays the star */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(95deg, rgba(6,22,31,0.74) 0%, rgba(6,22,31,0.34) 36%, rgba(6,22,31,0.06) 60%, rgba(6,22,31,0) 78%)',
+            'linear-gradient(0deg, rgba(4,16,23,0.62) 0%, rgba(4,16,23,0.20) 26%, rgba(4,16,23,0) 52%), linear-gradient(95deg, rgba(5,18,26,0.42) 0%, rgba(5,18,26,0.12) 34%, rgba(5,18,26,0) 60%)',
         }}
       />
 

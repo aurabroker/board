@@ -8,6 +8,7 @@ import {
   Calculator,
   FileSignature,
   Landmark,
+  Phone,
 } from 'lucide-react';
 
 const ICONS = {
@@ -20,6 +21,7 @@ const ICONS = {
   calculator: Calculator,
   'file-signature': FileSignature,
   landmark: Landmark,
+  phone: Phone,
 };
 
 /** Aura D&O — Icon. Thin wrapper over lucide-react, looked up by kebab-case name. */
