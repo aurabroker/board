@@ -1,50 +1,57 @@
 /* ============================================================
    Aura D&O — Color tokens
-   Mood: law-firm gravitas meets fintech precision.
-   Deep navy ground, restrained amber/gold accent, off-white ink.
+   Mood: open ocean. Deep underwater navy-teal as the ground,
+   a clean Aura azure as the accent, warm ivory + foam-white light.
+   (Token NAMES are kept stable so the component layer re-skins
+    automatically; the *values* now describe the marine direction.)
    ============================================================ */
 
 :root {
-  /* ---- Navy / steel scale (the ground) ---- */
-  --navy-950: #070F18;
-  --navy-900: #0A1622;
-  --navy-800: #0D1B2A; /* primary dark surface */
-  --navy-700: #142435;
-  --navy-600: #1C2B3A; /* steel — alt dark surface */
-  --navy-500: #27384B;
-  --navy-400: #3A4F64;
-  --navy-300: #5A7186;
-  --navy-200: #8A9DAF;
-  --navy-100: #BCC8D3;
+  /* ---- Deep ocean / navy-teal scale (the ground) ---- */
+  --navy-950: #04161F;
+  --navy-900: #07212E; /* darkest — footer / abyss */
+  --navy-800: #0A2A3A; /* primary dark surface — deep water */
+  --navy-700: #103445;
+  --navy-600: #16455B; /* steel / mid ocean — alt dark surface */
+  --navy-500: #1E576F;
+  --navy-400: #2E7290;
+  --navy-300: #5790A8;
+  --navy-200: #8FB4C6;
+  --navy-100: #C2D7E1;
 
-  /* ---- Amber / gold scale (the accent) ---- */
-  --gold-200: #EFD8A3;
-  --gold-300: #E4C078;
-  --gold-400: #DBA94A;
-  --gold-500: #C9922A; /* signature accent */
-  --gold-600: #A8761C;
-  --gold-700: #855C14;
+  /* ---- Azure accent scale (the "Aura" blue) ---- */
+  --gold-200: #CFE9F6; /* pale aqua */
+  --gold-300: #8FCBEA; /* light aqua — italic highlight on dark */
+  --gold-400: #4FA6D4;
+  --gold-500: #1F86BD; /* signature accent — Aura azure */
+  --gold-600: #166C9B;
+  --gold-700: #0F5275;
 
-  /* ---- Light / paper scale ---- */
+  /* ---- Light / foam scale ---- */
   --paper-0:  #FFFFFF;
-  --paper-50: #F8F9FB; /* cool white section bg */
-  --paper-100:#F1F3F7;
-  --paper-200:#E4E8EE;
-  --paper-300:#D2D8E1;
+  --paper-50: #F4F8FB; /* cool foam-white section bg */
+  --paper-100:#EAF1F6;
+  --paper-200:#DCE7EE;
+  --paper-300:#C7D6E0;
+
+  /* ---- Warm ivory / sand (brand light surface) ---- */
+  --cream-50:  #FBF7EE; /* warm ivory section bg */
+  --cream-100: #F4ECDB;
+  --sand-line: #E7DCC6;
 
   /* ---- Ink ---- */
-  --ink-0:   #F5F5F0; /* off-white text on dark */
-  --ink-50:  #E9EAE4;
-  --slate-700:#33414F;
-  --slate-600:#475565;
-  --slate-500:#5E6C7C;
-  --slate-400:#7B8896;
+  --ink-0:   #F5FAFD; /* near-white text on dark water */
+  --ink-50:  #E6EFF4;
+  --slate-700:#1E3A48;
+  --slate-600:#33505E;
+  --slate-500:#506C7A;
+  --slate-400:#74909E;
 
   /* ---- Semantic ---- */
   --danger-500: #C2433B; /* claim / risk red */
   --danger-600: #A1332C;
-  --success-500:#3E7C63; /* covered / protected green */
-  --success-600:#2F5F4C;
+  --success-500:#2E8B72; /* covered / protected sea-green */
+  --success-600:#236E5A;
 
   /* ============ Semantic aliases ============ */
   /* Surfaces */
@@ -52,6 +59,7 @@
   --surface-raised:     var(--navy-700);
   --surface-steel:      var(--navy-600);
   --surface-light:      var(--paper-50);
+  --surface-ivory:      var(--cream-50);
   --surface-card-light: var(--paper-0);
   --surface-card-dark:  var(--navy-700);
 
@@ -63,8 +71,8 @@
   --text-accent:        var(--gold-500);
 
   /* Lines & borders */
-  --border-on-dark:     rgba(245, 245, 240, 0.12);
-  --border-on-dark-strong: rgba(245, 245, 240, 0.22);
+  --border-on-dark:     rgba(207, 233, 246, 0.14);
+  --border-on-dark-strong: rgba(207, 233, 246, 0.26);
   --border-on-light:    var(--paper-200);
   --border-accent:      var(--gold-500);
 
@@ -72,7 +80,8 @@
   --accent:             var(--gold-500);
   --accent-hover:       var(--gold-400);
   --accent-press:       var(--gold-600);
-  --accent-contrast:    var(--navy-900); /* text on gold */
+  --accent-contrast:    #F6FBFE; /* text on azure */
+  --accent-rgb:         31, 134, 189; /* for tinted fills */
 
   /* Status */
   --status-risk:        var(--danger-500);

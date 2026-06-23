@@ -174,7 +174,7 @@ export function RolesSection() {
                   height: 44,
                   borderRadius: 'var(--radius-md)',
                   border: '1px solid var(--border-accent)',
-                  background: 'rgba(201,146,42,0.08)',
+                  background: 'rgba(var(--accent-rgb),0.10)',
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: 'var(--gold-500)',

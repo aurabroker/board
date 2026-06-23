@@ -5,7 +5,7 @@
  */
 export function Badge({ tone = 'accent', kind = 'pill', children, style, ...rest }) {
   const tones = {
-    accent:  { fg: 'var(--gold-300)', bg: 'rgba(201,146,42,0.12)', bd: 'rgba(201,146,42,0.35)' },
+    accent:  { fg: 'var(--gold-300)', bg: 'rgba(var(--accent-rgb),0.12)', bd: 'rgba(var(--accent-rgb),0.35)' },
     risk:    { fg: '#E78A84', bg: 'rgba(194,67,59,0.14)', bd: 'rgba(194,67,59,0.40)' },
     covered: { fg: '#7FC2A6', bg: 'rgba(62,124,99,0.16)', bd: 'rgba(62,124,99,0.40)' },
     neutral: { fg: 'var(--navy-100)', bg: 'rgba(245,245,240,0.06)', bd: 'var(--border-on-dark)' },
@@ -17,8 +17,8 @@ export function Badge({ tone = 'accent', kind = 'pill', children, style, ...rest
       <span
         style={{
           display: 'inline-flex', alignItems: 'center', gap: '10px',
-          fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)',
-          fontWeight: 'var(--weight-medium)', letterSpacing: 'var(--tracking-eyebrow)',
+          fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)',
+          fontWeight: 'var(--weight-semibold)', letterSpacing: 'var(--tracking-eyebrow)',
           textTransform: 'uppercase', color: 'var(--text-accent)', ...style,
         }}
         {...rest}

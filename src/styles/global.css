@@ -29,11 +29,11 @@ a {
   display: none;
 }
 
-/* Eyebrow / kicker utility (mono, uppercase, wide tracking) */
+/* Eyebrow / kicker utility (tracked uppercase sans) */
 .aura-eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--text-accent);
@@ -42,7 +42,8 @@ a {
 @media (max-width: 1000px) {
   .hero-grid,
   .process-grid,
-  .contact-grid {
+  .contact-grid,
+  .shield-grid {
     grid-template-columns: 1fr !important;
   }
   .risk-grid {
@@ -66,5 +67,9 @@ a {
   }
   body {
     padding-bottom: 84px;
+  }
+  /* On phones, let the marine bands lead with text; photo sits below as a band */
+  .shield-media {
+    min-height: 280px !important;
   }
 }

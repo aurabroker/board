@@ -74,7 +74,7 @@ export function Button({
     if (variant === 'primary') e.currentTarget.style.background = 'var(--accent-hover)';
     if (variant === 'secondary') e.currentTarget.style.borderColor = 'var(--accent)';
     if (variant === 'secondary') e.currentTarget.style.color = 'var(--text-accent)';
-    if (variant === 'ghost') e.currentTarget.style.background = 'rgba(201,146,42,0.10)';
+    if (variant === 'ghost') e.currentTarget.style.background = 'rgba(var(--accent-rgb),0.10)';
     if (variant === 'light') e.currentTarget.style.background = 'var(--navy-700)';
   };
   const leave = (e) => {

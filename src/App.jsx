@@ -1,4 +1,4 @@
-import { Nav, Hero, Footer } from './sections/Shell';
+import { Nav, Hero, ShieldBand, Footer } from './sections/Shell';
 import { RiskSection, CoverageSection, RolesSection, ProcessSection, FaqSection } from './sections/Sections';
 import { ContactSection, StickyCTA } from './sections/Contact';
 
@@ -12,6 +12,7 @@ function App() {
     <div style={{ background: 'var(--navy-800)', minHeight: '100vh' }}>
       <Nav onContact={goContact} />
       <Hero onContact={goContact} />
+      <ShieldBand onContact={goContact} />
       <RiskSection />
       <CoverageSection />
       <RolesSection />

@@ -1,8 +1,8 @@
 /* Aura D&O — Webfonts
-   Google Fonts substitutes (no licensed brand binaries supplied):
-   - Display:  Playfair Display  (prestige, high-contrast serif)
-   - Body/UI:  DM Sans           (clean, modern, neutral)
-   - Mono:     JetBrains Mono    (legal citations, §-references)
+   Marine / editorial direction (matches the brand boards):
+   - Display:  Cormorant Garamond  (elegant, high-contrast old-style serif)
+   - Body/UI:  DM Sans             (clean, modern, neutral)
+   - Mono:     JetBrains Mono      (compact data labels, e.g. comparison table)
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');

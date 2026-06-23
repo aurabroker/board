@@ -11,7 +11,7 @@ export function ProcessStep({ step, title, children, last = false, style }) {
           border: '1px solid var(--border-accent)', color: 'var(--accent)',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'var(--font-display)', fontSize: 'var(--text-lg)', fontWeight: 'var(--weight-bold)',
-          background: 'rgba(201,146,42,0.08)',
+          background: 'rgba(var(--accent-rgb),0.10)',
         }}>{String(step).padStart(2, '0')}</span>
         {!last && <span style={{ flex: 1, width: '1px', background: 'var(--border-on-dark)', marginTop: '8px' }} />}
       </div>

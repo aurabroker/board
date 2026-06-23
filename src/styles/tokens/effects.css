@@ -19,9 +19,9 @@
   --shadow-lg: 0 18px 40px rgba(13, 27, 42, 0.12), 0 6px 14px rgba(13, 27, 42, 0.07);
 
   /* ---- Glow / accent on dark ---- */
-  --shadow-accent: 0 6px 24px rgba(201, 146, 42, 0.28);
-  --ring-accent: 0 0 0 3px rgba(201, 146, 42, 0.35);
-  --ring-focus: 0 0 0 3px rgba(201, 146, 42, 0.45);
+  --shadow-accent: 0 8px 26px rgba(31, 134, 189, 0.30);
+  --ring-accent: 0 0 0 3px rgba(31, 134, 189, 0.35);
+  --ring-focus: 0 0 0 3px rgba(31, 134, 189, 0.45);
 
   /* ---- Hairlines ---- */
   --hairline-dark: 1px solid var(--border-on-dark);
