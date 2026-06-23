@@ -2,7 +2,6 @@ import { Button } from '../components/core/Button';
 import { Badge } from '../components/core/Badge';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
-import { WaveDivider } from '../components/WaveDivider';
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -150,7 +149,6 @@ export function Hero({ onContact }) {
           </div>
         </div>
       </div>
-      <WaveDivider color="var(--cream-50)" style={{ position: 'absolute', left: 0, right: 0, bottom: '-1px', zIndex: 3 }} />
     </header>
   );
 }
@@ -158,58 +156,73 @@ export function Hero({ onContact }) {
 export function ShieldBand({ onContact }) {
   return (
     <section
+      className="hero-fullbleed"
       style={{
         position: 'relative',
-        background: 'var(--cream-50)',
         overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        minHeight: 'clamp(520px, 80vh, 780px)',
+        paddingTop: 'clamp(56px, 7vw, 96px)',
+        paddingBottom: 'clamp(56px, 7vw, 96px)',
+        paddingRight: 'clamp(20px, 5vw, 64px)',
+        paddingLeft: 'calc(var(--rail-w) + clamp(20px, 4vw, 48px))',
+        background: 'var(--navy-900)',
       }}
     >
       <div
-        className="shield-grid"
+        aria-hidden="true"
         style={{
-          maxWidth: 'var(--container-max)',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
-          alignItems: 'stretch',
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'url(/shark-wide.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
         }}
-      >
-        <div
-          style={{
-            padding: 'clamp(56px,8vw,112px) clamp(24px,4vw,72px)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(95deg, rgba(4,16,23,0.80) 0%, rgba(4,16,23,0.46) 32%, rgba(4,16,23,0.10) 58%, rgba(4,16,23,0) 80%)',
+        }}
+      />
+
+      <div style={{ position: 'relative', width: '100%', maxWidth: 'var(--container-max)', margin: '0 auto' }}>
+        <div style={{ maxWidth: '600px' }}>
           <Badge kind="eyebrow">Twoja tarcza</Badge>
           <p
             style={{
-              margin: '24px 0 0',
+              margin: '22px 0 0',
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(28px, 3.4vw, 44px)',
-              lineHeight: 1.22,
+              fontSize: 'clamp(30px, 3.8vw, 54px)',
+              lineHeight: 1.18,
               letterSpacing: '-0.005em',
-              color: 'var(--navy-800)',
+              color: 'var(--ink-0)',
+              textShadow: '0 2px 22px rgba(4,16,23,0.6)',
             }}
           >
             W biznesie nie musisz pływać sam. Na prawdziwej głębi{' '}
-            <span style={{ fontStyle: 'italic', color: 'var(--gold-600)' }}>warto mieć swoją tarczę.</span>
+            <span style={{ fontStyle: 'italic', color: 'var(--gold-300)' }}>warto mieć swoją tarczę.</span>
           </p>
           <p
             style={{
-              margin: '22px 0 0',
-              maxWidth: '46ch',
+              margin: '20px 0 0',
+              maxWidth: '44ch',
               fontFamily: 'var(--font-body)',
               fontSize: '17px',
               lineHeight: 1.65,
-              color: 'var(--slate-600)',
+              color: 'var(--ink-50)',
+              textShadow: '0 1px 16px rgba(4,16,23,0.7)',
             }}
           >
             Drapieżniki krążą tam, gdzie pachnie pieniądzem: akcjonariusze, wierzyciele, urzędy, syndyk.
-            Jako broker stajemy między Tobą a roszczeniem — i dobieramy polisę, która naprawdę osłania Twój majątek.
+            Jako broker stajemy między Tobą a roszczeniem.
           </p>
-          <div style={{ marginTop: '32px' }}>
+          <div style={{ marginTop: '30px' }}>
             <Button
               variant="primary"
               size="lg"
@@ -220,18 +233,6 @@ export function ShieldBand({ onContact }) {
             </Button>
           </div>
         </div>
-
-        <div
-          className="shield-media"
-          aria-hidden="true"
-          style={{
-            minHeight: '460px',
-            backgroundImage: 'url(/shark.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
       </div>
     </section>
   );

@@ -116,24 +116,40 @@ a {
 .sidenav-links {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
+/* Fancy editorial menu: elegant serif + animated gold underline */
 .sidenav-links a {
-  display: block;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  padding: 4px 1px;
+  font-family: var(--font-display);
+  font-size: 24px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
   color: var(--ink-0);
   text-decoration: none;
-  text-shadow: 0 1px 14px rgba(2, 10, 16, 0.9);
-  transition: background var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
+  text-shadow: 0 1px 16px rgba(2, 10, 16, 0.92);
+  transition: color var(--dur-base) var(--ease-standard);
+}
+.sidenav-links a::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold-300);
+  box-shadow: 0 1px 10px rgba(2, 10, 16, 0.8);
+  transition: width var(--dur-base) var(--ease-out);
 }
 .sidenav-links a:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: var(--gold-300);
+  font-style: italic;
+}
+.sidenav-links a:hover::after {
+  width: calc(100% - 2px);
 }
 .sidenav-foot {
   margin-top: auto; /* pin CTA + phone to the bottom of the rail */
@@ -181,9 +197,10 @@ a {
   }
   .sidenav-links {
     flex-direction: row;
-    gap: 10px;
+    gap: 14px;
   }
   .sidenav-links a {
+    font-size: 18px;
     text-shadow: none;
     color: var(--navy-100);
   }
