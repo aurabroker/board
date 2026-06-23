@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { Button } from '../components/core/Button';
 import { Badge } from '../components/core/Badge';
 import { Icon } from '../components/Icon';
@@ -49,25 +48,6 @@ export function Nav({ onContact }) {
 
 export function Hero({ onContact }) {
   const textShadow = '0 2px 22px rgba(4,16,23,0.55)';
-  const mediaRef = useRef(null);
-
-  useEffect(() => {
-    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    let raf = 0;
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        const y = window.scrollY || 0;
-        const offset = Math.min(y * 0.12, 44); // gentle whale parallax
-        if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.12)`;
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
-  }, []);
 
   return (
     <header
@@ -78,7 +58,7 @@ export function Hero({ onContact }) {
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'flex-end',
-        minHeight: 'clamp(560px, 88vh, 860px)',
+        aspectRatio: '1366 / 768',
         paddingTop: 'clamp(120px, 16vh, 200px)',
         paddingBottom: 'clamp(48px, 7vw, 92px)',
         paddingRight: 'clamp(20px, 5vw, 64px)',
@@ -87,7 +67,6 @@ export function Hero({ onContact }) {
       }}
     >
       <video
-        ref={mediaRef}
         aria-hidden="true"
         autoPlay
         muted
@@ -101,8 +80,6 @@ export function Hero({ onContact }) {
           height: '100%',
           objectFit: 'cover',
           objectPosition: 'center center',
-          transform: 'scale(1.12)',
-          willChange: 'transform',
         }}
       >
         <source src="/hero.webm" type="video/webm" />
