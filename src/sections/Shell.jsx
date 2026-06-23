@@ -60,8 +60,8 @@ export function Hero({ onContact }) {
       raf = requestAnimationFrame(() => {
         raf = 0;
         const y = window.scrollY || 0;
-        const offset = Math.min(y * 0.18, 90); // gentle whale parallax
-        if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.22)`;
+        const offset = Math.min(y * 0.12, 44); // gentle whale parallax
+        if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.12)`;
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -102,21 +102,22 @@ export function Hero({ onContact }) {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          transform: 'scale(1.22)',
+          objectPosition: 'center 42%',
+          transform: 'scale(1.12)',
           willChange: 'transform',
         }}
       >
         <source src="/hero.webm" type="video/webm" />
         <source src="/hero.mp4" type="video/mp4" />
       </video>
-      {/* Soft scrim — light touch so the whale stays the star */}
+      {/* Scrim only at the edges — the centre stays a clear window on the whale */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(0deg, rgba(4,16,23,0.62) 0%, rgba(4,16,23,0.20) 26%, rgba(4,16,23,0) 52%), linear-gradient(95deg, rgba(5,18,26,0.42) 0%, rgba(5,18,26,0.12) 34%, rgba(5,18,26,0) 60%)',
+            'linear-gradient(180deg, rgba(4,16,23,0.42) 0%, rgba(4,16,23,0) 16%), linear-gradient(0deg, rgba(4,16,23,0.80) 0%, rgba(4,16,23,0.30) 18%, rgba(4,16,23,0) 42%)',
         }}
       />
 
