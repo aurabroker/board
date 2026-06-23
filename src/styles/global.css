@@ -94,6 +94,14 @@ a {
   margin-left: calc(-1 * var(--rail-w));
   width: calc(100% + var(--rail-w));
 }
+/* Full-width stage that shows the whole whale (matches the artwork aspect) */
+.hero-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1366 / 768;
+  background: var(--navy-900);
+  overflow: hidden;
+}
 
 /* ---- Left vertical navigation (transparent, floats over the hero) ---- */
 .sidenav {
