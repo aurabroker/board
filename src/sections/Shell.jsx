@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { Button } from '../components/core/Button';
 import { Badge } from '../components/core/Badge';
 import { Icon } from '../components/Icon';
 import { Logo } from '../components/Logo';
+import { WaveDivider } from '../components/WaveDivider';
 
 function scrollToId(id) {
   const el = document.getElementById(id);
@@ -47,6 +49,26 @@ export function Nav({ onContact }) {
 
 export function Hero({ onContact }) {
   const textShadow = '0 2px 22px rgba(4,16,23,0.55)';
+  const mediaRef = useRef(null);
+
+  useEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY || 0;
+        const offset = Math.min(y * 0.18, 90); // gentle whale parallax
+        if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.22)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
+  }, []);
+
   return (
     <header
       id="top"
@@ -67,6 +89,7 @@ export function Hero({ onContact }) {
       {/* Brand hero video (whale). Falls back to the whale still via poster
           until /hero.mp4 is present in /public. */}
       <video
+        ref={mediaRef}
         aria-hidden="true"
         autoPlay
         muted
@@ -79,6 +102,8 @@ export function Hero({ onContact }) {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
+          transform: 'scale(1.22)',
+          willChange: 'transform',
         }}
       >
         <source src="/hero.webm" type="video/webm" />
@@ -149,6 +174,7 @@ export function Hero({ onContact }) {
           </div>
         </div>
       </div>
+      <WaveDivider color="var(--cream-50)" style={{ position: 'absolute', left: 0, right: 0, bottom: '-1px', zIndex: 3 }} />
     </header>
   );
 }

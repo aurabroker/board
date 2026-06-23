@@ -30,6 +30,45 @@ a {
   display: none;
 }
 
+/* ---- Marine motion: section reveal + panning wave ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.85s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.reveal--in {
+  opacity: 1;
+  transform: none;
+}
+
+.wave-divider {
+  line-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.wave-svg {
+  display: block;
+  width: 200%;
+  height: clamp(38px, 5vw, 80px);
+  animation: wave-pan 18s linear infinite;
+}
+@keyframes wave-pan {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+  .wave-svg {
+    animation: none;
+  }
+}
+
 /* Eyebrow / kicker utility (tracked uppercase sans) */
 .aura-eyebrow {
   font-family: var(--font-body);

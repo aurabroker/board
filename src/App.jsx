@@ -1,6 +1,7 @@
 import { Nav, Hero, ShieldBand, Footer } from './sections/Shell';
 import { RiskSection, CoverageSection, RolesSection, ProcessSection, FaqSection } from './sections/Sections';
 import { ContactSection, StickyCTA } from './sections/Contact';
+import { Reveal } from './components/Reveal';
 
 function App() {
   const goContact = () => {
@@ -14,12 +15,12 @@ function App() {
       <div className="layout-main">
         <Hero onContact={goContact} />
         <ShieldBand onContact={goContact} />
-        <RiskSection />
-        <CoverageSection />
-        <RolesSection />
-        <ProcessSection />
-        <FaqSection />
-        <ContactSection />
+        <Reveal><RiskSection /></Reveal>
+        <Reveal><CoverageSection /></Reveal>
+        <Reveal><RolesSection /></Reveal>
+        <Reveal><ProcessSection /></Reveal>
+        <Reveal><FaqSection /></Reveal>
+        <Reveal><ContactSection /></Reveal>
         <Footer />
       </div>
       <StickyCTA onContact={goContact} />
