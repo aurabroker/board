@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Button } from '../components/core/Button';
 import { Badge } from '../components/core/Badge';
 import { Icon } from '../components/Icon';
@@ -47,106 +48,131 @@ export function Nav({ onContact }) {
 }
 
 export function Hero({ onContact }) {
+  const textShadow = '0 2px 22px rgba(4,16,23,0.55)';
+  const mediaRef = useRef(null);
+
+  useEffect(() => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const y = window.scrollY || 0;
+        const offset = Math.min(y * 0.12, 44); // gentle whale parallax
+        if (mediaRef.current) mediaRef.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.12)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
+  }, []);
+
   return (
     <header
       id="top"
       className="hero-fullbleed"
       style={{
         position: 'relative',
-        background: 'linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%)',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'flex-end',
+        minHeight: 'clamp(560px, 88vh, 860px)',
+        paddingTop: 'clamp(120px, 16vh, 200px)',
+        paddingBottom: 'clamp(48px, 7vw, 92px)',
+        paddingRight: 'clamp(20px, 5vw, 64px)',
+        paddingLeft: 'calc(var(--rail-w) + clamp(20px, 4vw, 48px))',
+        background: 'var(--navy-900)',
       }}
     >
-      {/* The whole whale — full-width 16:9 stage, never cropped. Video plays
-          once /hero.mp4 is added; until then the boardnew.png still shows. */}
-      <div className="hero-media">
-        <video
-          aria-hidden="true"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/boardnew.png"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center center',
-          }}
-        >
-          <source src="/hero.webm" type="video/webm" />
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        {/* faint top wash so the menu stays legible over the sky */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(180deg, rgba(4,16,23,0.40) 0%, rgba(4,16,23,0) 17%)',
-          }}
-        />
-      </div>
-
-      {/* Headline sits below the whale so nothing covers the animal */}
-      <div
-        className="hero-copy"
+      <video
+        ref={mediaRef}
+        aria-hidden="true"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/boardnew.png"
         style={{
-          position: 'relative',
-          paddingTop: 'clamp(40px, 5vw, 64px)',
-          paddingBottom: 'clamp(72px, 8vw, 116px)',
-          paddingRight: 'clamp(20px, 5vw, 64px)',
-          paddingLeft: 'calc(var(--rail-w) + clamp(20px, 4vw, 48px))',
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center center',
+          transform: 'scale(1.12)',
+          willChange: 'transform',
         }}
       >
-        <div style={{ maxWidth: 'var(--container-max)', margin: '0 auto' }}>
-          <div style={{ maxWidth: '720px' }}>
-            <Badge kind="eyebrow">OC Członków Zarządu · D&amp;O</Badge>
-            <h1
-              style={{
-                margin: '20px 0 0',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 600,
-                fontSize: 'clamp(44px, 6.4vw, 88px)',
-                lineHeight: 1.03,
-                letterSpacing: '-0.01em',
-                color: 'var(--ink-0)',
-              }}
+        <source src="/hero.webm" type="video/webm" />
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+      {/* Scrim only at the edges — the centre stays a clear window on the whale */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(180deg, rgba(4,16,23,0.42) 0%, rgba(4,16,23,0) 16%), linear-gradient(0deg, rgba(4,16,23,0.80) 0%, rgba(4,16,23,0.30) 18%, rgba(4,16,23,0) 42%)',
+        }}
+      />
+
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          maxWidth: 'var(--container-max)',
+          margin: '0 auto',
+        }}
+      >
+        <div style={{ maxWidth: '620px' }}>
+          <Badge kind="eyebrow">OC Członków Zarządu · D&amp;O</Badge>
+          <h1
+            style={{
+              margin: '22px 0 0',
+              fontFamily: 'var(--font-display)',
+              fontWeight: 600,
+              fontSize: 'clamp(46px, 7vw, 92px)',
+              lineHeight: 1.02,
+              letterSpacing: '-0.01em',
+              color: 'var(--ink-0)',
+              textShadow,
+            }}
+          >
+            Nie tylko dla <span style={{ fontStyle: 'italic', color: 'var(--gold-300)' }}>wielorybów</span>.
+          </h1>
+          <p
+            style={{
+              margin: '24px 0 0',
+              maxWidth: '50ch',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'clamp(17px, 1.4vw, 20px)',
+              lineHeight: 1.6,
+              color: 'var(--ink-50)',
+              textShadow,
+            }}
+          >
+            Roszczenie nie pyta o wielkość spółki. Ubezpieczenie D&amp;O chroni{' '}
+            <strong style={{ color: 'var(--ink-0)', fontWeight: 600 }}>prywatny majątek</strong> prezesów,
+            członków zarządu i rad nadzorczych — niezależnie od skali biznesu.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '36px' }}>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={onContact}
+              iconRight={<Icon name="arrow-right" size={18} color="var(--accent-contrast)" />}
             >
-              Nie tylko dla <span style={{ fontStyle: 'italic', color: 'var(--gold-300)' }}>wielorybów</span>.
-            </h1>
-            <p
-              style={{
-                margin: '22px 0 0',
-                maxWidth: '54ch',
-                fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(17px, 1.4vw, 20px)',
-                lineHeight: 1.6,
-                color: 'var(--navy-100)',
-              }}
-            >
-              Roszczenie nie pyta o wielkość spółki. Ubezpieczenie D&amp;O chroni{' '}
-              <strong style={{ color: 'var(--ink-0)', fontWeight: 600 }}>prywatny majątek</strong> prezesów,
-              członków zarządu i rad nadzorczych — niezależnie od skali biznesu.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '34px' }}>
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={onContact}
-                iconRight={<Icon name="arrow-right" size={18} color="var(--accent-contrast)" />}
-              >
-                Sprawdź, czy jesteś chroniony
-              </Button>
-              <Button variant="secondary" size="lg" onClick={() => scrollToId('ryzyko')}>
-                Czytaj więcej
-              </Button>
-            </div>
+              Sprawdź, czy jesteś chroniony
+            </Button>
+            <Button variant="secondary" size="lg" onClick={() => scrollToId('ryzyko')}>
+              Czytaj więcej
+            </Button>
           </div>
         </div>
       </div>
-
       <WaveDivider color="var(--cream-50)" style={{ position: 'absolute', left: 0, right: 0, bottom: '-1px', zIndex: 3 }} />
     </header>
   );
