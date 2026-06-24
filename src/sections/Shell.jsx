@@ -105,7 +105,23 @@ export function Hero({ onContact }) {
         }}
       >
         <div style={{ maxWidth: '620px' }}>
-          <Badge kind="eyebrow">OC Członków Zarządu · D&amp;O</Badge>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--text-xs)',
+              fontWeight: 600,
+              letterSpacing: 'var(--tracking-eyebrow)',
+              textTransform: 'uppercase',
+              color: '#FFFFFF',
+              textShadow: '0 0 18px rgba(228,192,120,0.9), 0 0 6px rgba(228,192,120,0.7)',
+            }}
+          >
+            <span style={{ width: 24, height: 1, background: 'var(--gold-300)', boxShadow: '0 0 8px rgba(228,192,120,0.9)' }} />
+            Odpowiedzialność Cywilna Członków Zarządu · Directors &amp; Officers (D&amp;O)
+          </span>
           <h1
             style={{
               margin: '22px 0 0',
@@ -220,7 +236,7 @@ export function ShieldBand({ onContact }) {
               textShadow: '0 1px 16px rgba(4,16,23,0.7)',
             }}
           >
-            Drapieżniki krążą tam, gdzie pachnie pieniądzem: akcjonariusze, wierzyciele, urzędy, syndyk.
+            Drapieżniki krążą tam, gdzie pachnie pieniądzem: akcjonariusze, wierzyciele, urzędy, syndyk, nawet Twoi pracownicy.
             Jako broker stajemy między Tobą a roszczeniem.
           </p>
           <div style={{ marginTop: '30px' }}>

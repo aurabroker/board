@@ -159,12 +159,13 @@ export function RolesSection() {
     { icon: 'calculator', role: 'CFO / Dyrektor Finansowy', line: 'Sprawozdania i decyzje finansowe pod lupą KNF i wierzycieli.' },
     { icon: 'file-signature', role: 'Prokurent', line: 'Działa w imieniu spółki — i ponosi za to osobistą odpowiedzialność.' },
     { icon: 'landmark', role: 'Rada Nadzorcza', line: 'Nadzór to też odpowiedzialność: za to, czego nie dopilnowano.' },
+    { icon: 'ghost', role: 'Shadow Directors', line: 'Faktycznie kierujesz spółką bez wpisu do KRS? I tak odpowiadasz jak formalny zarząd.' },
   ];
   return (
     <section style={{ background: 'var(--navy-900)', padding: 'clamp(64px,8vw,112px) clamp(20px,5vw,64px)' }}>
       <div style={wrap}>
         <SectionHead eyebrow="Dla kogo" title="Jeśli podejmujesz decyzje — odpowiadasz majątkiem." />
-        <div className="roles-grid" style={{ marginTop: '48px', display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}>
+        <div className="roles-grid" style={{ marginTop: '48px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
           {roles.map((r, i) => (
             <Card key={i} surface="outline" interactive style={{ padding: '24px 22px' }}>
               <span
@@ -187,6 +188,66 @@ export function RolesSection() {
             </Card>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function PremiumExamples() {
+  const examples = [
+    {
+      type: 'Firma budowlana',
+      rows: [['Przychód', '30 mln zł'], ['Suma ubezpieczenia', '5 000 000 zł']],
+      premium: '6 000 zł',
+    },
+    {
+      type: 'Grupa deweloperska',
+      rows: [['Przychody', '120 mln zł'], ['Suma ubezpieczenia', '20 000 000 zł']],
+      premium: '21 000 zł',
+    },
+    {
+      type: 'Piekarnia — Grupa Kapitałowa (spółki poza Polską)',
+      rows: [['Obroty', 'ponad 1 mld zł'], ['Suma gwarancyjna', '60 000 000 zł']],
+      premium: '46 000 zł',
+    },
+  ];
+  return (
+    <section style={{ background: 'var(--cream-50)', padding: 'clamp(64px,8vw,112px) clamp(20px,5vw,64px)' }}>
+      <div style={wrap}>
+        <SectionHead
+          dark={false}
+          eyebrow="Przykładowe składki"
+          title="Ile to kosztuje?"
+          intro="Konkretne wdrożenia z naszego portfela. Składka zależy od skali, branży i sumy gwarancyjnej — wyceniamy indywidualnie."
+        />
+        <div className="premium-grid" style={{ marginTop: '48px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          {examples.map((ex, i) => (
+            <Card key={i} surface="light" accentTop style={{ display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ margin: '4px 0 0', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '22px', lineHeight: 1.2, color: 'var(--navy-800)', minHeight: '52px' }}>
+                {ex.type}
+              </h3>
+              <dl style={{ margin: '22px 0 0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {ex.rows.map(([label, value], j) => (
+                  <div key={j} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '12px', paddingBottom: '12px', borderBottom: '1px solid var(--border-on-light)' }}>
+                    <dt style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--slate-500)' }}>{label}</dt>
+                    <dd style={{ margin: 0, fontFamily: 'var(--font-body)', fontSize: '15px', fontWeight: 600, color: 'var(--navy-800)', textAlign: 'right' }}>{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
+                <span style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--slate-500)' }}>
+                  Składka roczna
+                </span>
+                <span style={{ display: 'block', marginTop: '4px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(34px,4vw,44px)', lineHeight: 1, color: 'var(--gold-600)' }}>
+                  {ex.premium}
+                </span>
+              </div>
+            </Card>
+          ))}
+        </div>
+        <p style={{ margin: '24px 0 0', fontFamily: 'var(--font-body)', fontSize: '13px', lineHeight: 1.6, color: 'var(--slate-500)' }}>
+          Przykłady poglądowe. Finalną składkę i zakres ustalamy indywidualnie po analizie ekspozycji.
+        </p>
       </div>
     </section>
   );

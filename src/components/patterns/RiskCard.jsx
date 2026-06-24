@@ -24,7 +24,7 @@ export function RiskCard({ index, claimant, title, children, icon = null, style 
       }}
     >
       <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{
+        <span className="neon-red" style={{
           fontFamily: 'var(--font-mono)', fontSize: 'var(--text-2xs)',
           letterSpacing: 'var(--tracking-wide)', textTransform: 'uppercase',
           color: '#E78A84', background: 'rgba(194,67,59,0.14)',
